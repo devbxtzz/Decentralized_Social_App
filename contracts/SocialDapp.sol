@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity >=0.8.1;
+pragma solidity >=0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/Base64.sol";
 
 
-contract SocialDapp is ERC721("SocialDApp", "TDAPP") {
+contract SocialDapp is ERC721("SocialDApp", "SDP") {
     uint256 tokenId;
     post[] public posts;
 
@@ -39,7 +39,7 @@ contract SocialDapp is ERC721("SocialDApp", "TDAPP") {
         );
     }
 
-    function writepost(string memory prefName, string memory prefDesc) public {
+    function writePost(string memory prefName, string memory prefDesc) public {
         _safeMint(msg.sender, tokenId);
         posts.push(post({
             name: prefName,
@@ -59,7 +59,7 @@ contract SocialDapp is ERC721("SocialDApp", "TDAPP") {
         posts[postIndex].comments.push(prefComments);
     }
 
-    function getAllposts() public view returns(post[] memory) {
+    function getAllPosts() public view returns(post[] memory) {
         return posts;
     }
 }
